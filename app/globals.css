@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f7f5f0;
+  --surface: #ffffff;
+  --ink: #111111;
+  --muted: #6b6b6b;
+  --line: #e7e4dd;
+  --indigo: #2b2e83;
+  --sand: #c9a66b;
+  color-scheme: light;
+}
+
+.dark {
+  --paper: #121212;
+  --surface: #1b1b1a;
+  --ink: #f6f3ed;
+  --muted: #b7b3aa;
+  --line: #35332f;
+  --indigo: #aeb4ff;
+  --sand: #d8bc85;
+  color-scheme: dark;
+}
+
+* { border-color: var(--line); }
+html { background: var(--paper); scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
+a { text-underline-offset: 3px; }
+button, input, select, textarea { font: inherit; }
+::selection { background: color-mix(in srgb, var(--indigo) 24%, transparent); }
+
+.font-display { font-family: Georgia, 'Times New Roman', serif; letter-spacing: -0.045em; }
+.font-ui { font-family: Arial, Helvetica, sans-serif; }
+.tabular-nums { font-variant-numeric: tabular-nums; }
+
+.paper-grid {
+  background-image: linear-gradient(to right, color-mix(in srgb, var(--line) 45%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in srgb, var(--line) 45%, transparent) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.arewa-pattern {
+  background-image:
+    linear-gradient(30deg, color-mix(in srgb, var(--indigo) 6%, transparent) 12%, transparent 12.5%, transparent 87%, color-mix(in srgb, var(--indigo) 6%, transparent) 87.5%, color-mix(in srgb, var(--indigo) 6%, transparent)),
+    linear-gradient(150deg, color-mix(in srgb, var(--indigo) 6%, transparent) 12%, transparent 12.5%, transparent 87%, color-mix(in srgb, var(--indigo) 6%, transparent) 87.5%, color-mix(in srgb, var(--indigo) 6%, transparent)),
+    linear-gradient(30deg, color-mix(in srgb, var(--indigo) 6%, transparent) 12%, transparent 12.5%, transparent 87%, color-mix(in srgb, var(--indigo) 6%, transparent) 87.5%, color-mix(in srgb, var(--indigo) 6%, transparent));
+  background-position: 0 0, 0 0, 16px 28px;
+  background-size: 32px 56px;
+}
+
+.focus-ring:focus-visible { outline: 3px solid color-mix(in srgb, var(--indigo) 55%, white); outline-offset: 3px; }
+
+.input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 0.7rem 0.8rem;
+  font-size: 0.925rem;
+  font-weight: 400;
+}
+.input:focus { outline: 3px solid color-mix(in srgb, var(--indigo) 28%, transparent); outline-offset: 1px; border-color: var(--indigo); }
+
+.prose-copy p + p { margin-top: 1rem; }
+.prose-copy a { color: var(--indigo); font-weight: 700; text-decoration: underline; }
