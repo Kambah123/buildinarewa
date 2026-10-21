@@ -162,12 +162,19 @@ export async function getProductBySlug(slug: string) {
   if (supabase) {
     const {data: makerRows} = await supabase
       .from('product_makers')
-      .select('role, profiles(id, name, handle)')
+      .select('role, profiles(id, name, handle), builders(id, name, slug)')
       .eq('product_id', product.id);
     if (makerRows) {
-      product.makers = (makerRows as unknown as Array<{role: string; profiles: {id: string; name: string; handle?: string | null} | null}>)
-        .filter((row) => row.profiles)
-        .map((row) => ({id: row.profiles!.id, name: row.profiles!.name, handle: row.profiles!.handle, role: row.role}));
+      product.makers = (makerRows as unknown as Array<{
+        role: string;
+        profiles: {id: string; name: string; handle?: string | null} | null;
+        builders: {id: string; name: string; slug?: string | null} | null;
+      }>)
+        .map((row) => {
+          const maker = row.profiles ?? row.builders;
+          return maker ? {id: maker.id, name: maker.name, handle: 'handle' in maker ? maker.handle : null, slug: 'slug' in maker ? maker.slug : null, role: row.role} : null;
+        })
+        .filter((maker): maker is NonNullable<typeof maker> => Boolean(maker));
     }
   }
 

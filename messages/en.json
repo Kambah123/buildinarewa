@@ -11,7 +11,10 @@
     "mySpace": "My space",
     "review": "Review queue",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "builders": "Builders",
+    "stories": "Stories",
+    "newsletter": "Newsletter"
   },
   "Common": {
     "search": "Search",
@@ -28,7 +31,10 @@
     "cancel": "Cancel",
     "signIn": "Sign in",
     "previous": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "viewAll": "View all",
+    "back": "Back",
+    "email": "Email"
   },
   "Home": {
     "eyebrow": "Northern Nigeria's product directory",
@@ -54,7 +60,24 @@
     "whyFourText": "Arewa builders everywhere have a home here.",
     "ctaTitle": "Building something useful?",
     "ctaText": "Tell us about it. We review every listing before it becomes part of the directory.",
-    "cta": "Submit a product"
+    "cta": "Submit a product",
+    "featured": "Featured this week",
+    "featuredIntro": "One carefully selected listing from the directory, chosen for clarity, usefulness and a connection to Arewa.",
+    "whyFeatured": "Why we featured it",
+    "meet": "Meet the people building it",
+    "meetIntro": "Read the early stories behind products and the people making room for them.",
+    "readStories": "Read all stories",
+    "needs": "Match the need",
+    "needsIntro": "Start with the thing you want to do, then find an Arewa-built product to try.",
+    "newsletterEyebrow": "The weekly signal",
+    "newsletterTitle": "Good work, once a week.",
+    "newsletterText": "A small weekly email with newly approved products and one story worth reading. No noise.",
+    "newsletterAction": "Get the weekly email",
+    "directoryEyebrow": "Directory",
+    "buildersEyebrow": "Builders",
+    "exploreEyebrow": "Explore",
+    "purposeEyebrow": "Our purpose",
+    "featuredSeedReason": "This clearly marked seed listing shows the level of context the directory will surface as verified products arrive."
   },
   "Directory": {
     "title": "The directory",
@@ -91,7 +114,16 @@
     "shareX": "X",
     "shareLinkedIn": "LinkedIn",
     "makers": "The people behind it",
-    "seedNote": "This is a seed listing included while the directory grows. Details are reviewed before publication."
+    "seedNote": "This is a seed listing included while the directory grows. Details are reviewed before publication.",
+    "upvote": "Upvote",
+    "upvoted": "Upvoted",
+    "voteCount": "{count} upvotes",
+    "signInToVote": "Sign in to vote",
+    "voteError": "We could not update your vote. Please try again.",
+    "builders": "The people behind it",
+    "story": "Story",
+    "readStory": "Read story",
+    "featured": "Featured product"
   },
   "Submit": {
     "title": "Put your work on the map.",
@@ -152,7 +184,10 @@
     "view": "View",
     "websiteNote": "Website URLs stay fixed while a listing is under review.",
     "updated": "Your pending submission has been updated.",
-    "editIntro": "Update the important details while the listing is still in review."
+    "editIntro": "Update the important details while the listing is still in review.",
+    "upvotes": "My upvotes",
+    "upvotesIntro": "Products you have marked as useful.",
+    "noUpvotes": "You have not upvoted a product yet."
   },
   "Admin": {
     "title": "Review queue",
@@ -166,7 +201,40 @@
     "reasonPlaceholder": "Give the maker a useful, specific reason.",
     "edit": "Edit before publishing",
     "saveAndApprove": "Save & approve",
-    "notAllowed": "You do not have permission to review submissions."
+    "notAllowed": "You do not have permission to review submissions.",
+    "workspace": "Editorial workspace",
+    "builders": "Builders",
+    "stories": "Stories",
+    "newBuilder": "New builder",
+    "newStory": "New story",
+    "manageBuilders": "Manage builder profiles",
+    "manageStories": "Manage founder stories",
+    "publish": "Publish",
+    "saveDraft": "Save draft",
+    "create": "Create",
+    "seed": "Seed record",
+    "status": "Status",
+    "exportSubscribers": "Export subscribers",
+    "builderName": "Name",
+    "builderHeadline": "Headline",
+    "bioEn": "Bio (English)",
+    "bioHa": "Bio (Hausa)",
+    "state": "State",
+    "photoUrl": "Photo URL",
+    "website": "Website",
+    "xUrl": "X URL",
+    "linkedinUrl": "LinkedIn URL",
+    "storyBuilder": "Builder",
+    "coverUrl": "Cover image URL",
+    "titleEn": "Title (English)",
+    "titleHa": "Title (Hausa)",
+    "excerptEn": "Excerpt (English)",
+    "excerptHa": "Excerpt (Hausa)",
+    "bodyEn": "Story MDX (English)",
+    "bodyHa": "Story MDX (Hausa)",
+    "videoUrl": "Video URL",
+    "trustedMdx": "Write trusted MDX only. Published stories become visible immediately.",
+    "unknownSubmitter": "Submitted listing"
   },
   "NotFound": {
     "title": "This page has moved or does not exist.",
@@ -181,6 +249,55 @@
     "about": "About",
     "terms": "Terms",
     "privacy": "Privacy",
-    "builtWithCare": "Made with care for Arewa."
+    "builtWithCare": "Made with care for Arewa.",
+    "newsletter": "Weekly newsletter"
+  },
+  "Builder": {
+    "eyebrow": "Builders",
+    "title": "The people making the work visible.",
+    "intro": "Profiles of founders and teams connected to products in the directory.",
+    "products": "Products",
+    "story": "Story",
+    "allStories": "All stories",
+    "empty": "This builder does not have a public product yet.",
+    "back": "Back to builders",
+    "seedNote": "This is a clearly marked seed profile. It will be enriched only with maker-approved details.",
+    "website": "Website",
+    "x": "X",
+    "linkedin": "LinkedIn"
+  },
+  "Story": {
+    "eyebrow": "Founder stories",
+    "title": "The work behind the work.",
+    "intro": "Short editorial snapshots of the people, choices and practical lessons behind Arewa-built products.",
+    "read": "Read story",
+    "back": "Back to stories",
+    "by": "By",
+    "published": "Published",
+    "seedNote": "This is a clearly marked seed editorial preview.",
+    "watch": "Watch the conversation"
+  },
+  "Alternative": {
+    "eyebrow": "Arewa-built alternatives",
+    "title": "Alternatives to {name}",
+    "intro": "Products in the directory that makers have identified as an alternative to {name}.",
+    "empty": "No approved products currently identify themselves as an alternative to {name}.",
+    "browse": "Browse the directory"
+  },
+  "Newsletter": {
+    "eyebrow": "The weekly signal",
+    "title": "Keep up with what Arewa is building.",
+    "intro": "Every Monday, receive newly approved products and one thoughtful story. Choose English or Hausa; confirm once, unsubscribe any time.",
+    "email": "Email address",
+    "language": "Email language",
+    "subscribe": "Subscribe",
+    "success": "Check your inbox to confirm your subscription.",
+    "alreadySubscribed": "You are already subscribed to this weekly email.",
+    "error": "We could not save your subscription. Please try again.",
+    "confirmTitle": "Your subscription is confirmed.",
+    "confirmText": "The next weekly signal will arrive in the language you selected.",
+    "confirmInvalidTitle": "That confirmation link is no longer valid.",
+    "confirmInvalidText": "You may have already confirmed your subscription, or the link may be incomplete.",
+    "backHome": "Back home"
   }
 }

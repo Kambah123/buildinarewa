@@ -11,7 +11,10 @@
     "mySpace": "Nawa",
     "review": "Duba jerin aikace-aikace",
     "openMenu": "Buɗe menu",
-    "closeMenu": "Rufe menu"
+    "closeMenu": "Rufe menu",
+    "builders": "Masu ginawa",
+    "stories": "Labarai",
+    "newsletter": "Imel"
   },
   "Common": {
     "search": "Bincika",
@@ -28,7 +31,10 @@
     "cancel": "Soke",
     "signIn": "Shiga",
     "previous": "Baya",
-    "next": "Na gaba"
+    "next": "Na gaba",
+    "viewAll": "Duba duka",
+    "back": "Koma",
+    "email": "Imel"
   },
   "Home": {
     "eyebrow": "Kundin kayan fasaha na Arewacin Najeriya",
@@ -54,7 +60,24 @@
     "whyFourText": "Masu ginawa 'yan Arewa a ko'ina suna da wuri a nan.",
     "ctaTitle": "Kana gina wani abu mai amfani?",
     "ctaText": "Faɗa mana game da shi. Muna duba kowanne bayani kafin ya shiga kundin.",
-    "cta": "Tura manhaja"
+    "cta": "Tura manhaja",
+    "featured": "Fitacciyar wannan mako",
+    "featuredIntro": "Bayani guda da aka zaɓa daga kundin cikin kulawa, saboda bayyana, amfani da alaƙarsa da Arewa.",
+    "whyFeatured": "Dalilin da ya sa muka zaɓe shi",
+    "meet": "Haɗu da masu gina shi",
+    "meetIntro": "Karanta labaran farko da ke bayan manhajoji da mutanen da ke samar da wuri domin aikinsu.",
+    "readStories": "Karanta dukan labarai",
+    "needs": "Daidaita buƙata",
+    "needsIntro": "Fara da abin da kake son yi, sannan ka sami samfurin da aka gina a Arewa don gwadawa.",
+    "newsletterEyebrow": "Saƙon mako-mako",
+    "newsletterTitle": "Aiki mai kyau, sau ɗaya a mako.",
+    "newsletterText": "Ƙaramin imel na mako-mako mai sababbin manhajoji da aka amince da su da labari guda mai kyau. Ba hayaniya.",
+    "newsletterAction": "Sami imel na mako-mako",
+    "directoryEyebrow": "Kundin manhajoji",
+    "buildersEyebrow": "Masu ginawa",
+    "exploreEyebrow": "Bincika",
+    "purposeEyebrow": "Manufarmu",
+    "featuredSeedReason": "Wannan bayani na farko mai bayyanannen alama yana nuna irin bayanan da kundin zai bayyana yayin da samfurori da aka tabbatar ke zuwa."
   },
   "Directory": {
     "title": "Kundin manhajoji",
@@ -91,7 +114,16 @@
     "shareX": "X",
     "shareLinkedIn": "LinkedIn",
     "makers": "Mutanen da suka gina shi",
-    "seedNote": "Wannan misalin farko ne yayin da kundin ke girma. Ana duba bayanai kafin wallafawa."
+    "seedNote": "Wannan misalin farko ne yayin da kundin ke girma. Ana duba bayanai kafin wallafawa.",
+    "upvote": "Ƙara ƙuri’a",
+    "upvoted": "An ƙara ƙuri’a",
+    "voteCount": "Ƙuri’u {count}",
+    "signInToVote": "Shiga don ƙara ƙuri’a",
+    "voteError": "Ba mu iya sabunta ƙuri’arka ba. A sake gwadawa.",
+    "builders": "Mutanen da suka gina shi",
+    "story": "Labari",
+    "readStory": "Karanta labari",
+    "featured": "Fitaccen samfur"
   },
   "Submit": {
     "title": "Sanya aikinka a taswira.",
@@ -152,7 +184,10 @@
     "view": "Duba",
     "websiteNote": "Adireshin shafi yana nan yadda yake yayin da ake duba bayani.",
     "updated": "An sabunta bayanin da ake dubawa.",
-    "editIntro": "Sabunta mahimman bayanai yayin da ake ci gaba da bitar wannan bayani."
+    "editIntro": "Sabunta mahimman bayanai yayin da ake ci gaba da bitar wannan bayani.",
+    "upvotes": "Ƙuri’un da na ƙara",
+    "upvotesIntro": "Manhajojin da ka nuna suna da amfani.",
+    "noUpvotes": "Ba ka ƙara ƙuri’a ga wata manhaja ba tukuna."
   },
   "Admin": {
     "title": "Jerin dubawa",
@@ -166,7 +201,40 @@
     "reasonPlaceholder": "Ba mai ginawa dalili mai amfani kuma takamaimai.",
     "edit": "Gyara kafin wallafawa",
     "saveAndApprove": "Ajiye kuma amince",
-    "notAllowed": "Ba ka da izinin duba abubuwan da aka tura."
+    "notAllowed": "Ba ka da izinin duba abubuwan da aka tura.",
+    "workspace": "Wurin aikin masu gyara",
+    "builders": "Masu ginawa",
+    "stories": "Labarai",
+    "newBuilder": "Sabon mai ginawa",
+    "newStory": "Sabon labari",
+    "manageBuilders": "Sarrafa bayanan masu ginawa",
+    "manageStories": "Sarrafa labaran masu kafa",
+    "publish": "Wallafa",
+    "saveDraft": "Ajiye daftari",
+    "create": "Ƙirƙira",
+    "seed": "Bayanan farko",
+    "status": "Matsayi",
+    "exportSubscribers": "Fitar da masu rajista",
+    "builderName": "Suna",
+    "builderHeadline": "Takaitaccen bayani",
+    "bioEn": "Bayanan mutum da Turanci",
+    "bioHa": "Bayanan mutum da Hausa",
+    "state": "Jiha",
+    "photoUrl": "Adireshin hoto",
+    "website": "Shafin yanar gizo",
+    "xUrl": "Adireshin X",
+    "linkedinUrl": "Adireshin LinkedIn",
+    "storyBuilder": "Mai ginawa",
+    "coverUrl": "Adireshin hoton murfi",
+    "titleEn": "Take da Turanci",
+    "titleHa": "Take da Hausa",
+    "excerptEn": "Takaitaccen bayani da Turanci",
+    "excerptHa": "Takaitaccen bayani da Hausa",
+    "bodyEn": "Labarin MDX da Turanci",
+    "bodyHa": "Labarin MDX da Hausa",
+    "videoUrl": "Adireshin bidiyo",
+    "trustedMdx": "Rubuta MDX da aka tabbatar kawai. Labaran da aka wallafa suna bayyana nan take.",
+    "unknownSubmitter": "Bayani da aka tura"
   },
   "NotFound": {
     "title": "Wannan shafi ya canza ko babu shi.",
@@ -181,6 +249,55 @@
     "about": "Game da mu",
     "terms": "Sharuɗɗa",
     "privacy": "Sirri",
-    "builtWithCare": "An yi da kulawa domin Arewa."
+    "builtWithCare": "An yi da kulawa domin Arewa.",
+    "newsletter": "Imel na mako-mako"
+  },
+  "Builder": {
+    "eyebrow": "Masu ginawa",
+    "title": "Mutanen da ke bayyana aiki.",
+    "intro": "Bayanan masu kafa da ƙungiyoyi masu alaƙa da manhajojin da ke kundin.",
+    "products": "Manhajoji",
+    "story": "Labari",
+    "allStories": "Dukan labarai",
+    "empty": "Wannan mai ginawa bai da samfurin jama’a tukuna.",
+    "back": "Koma masu ginawa",
+    "seedNote": "Wannan bayanin farko ne mai bayyanannen alama. Za a ƙara shi ne kawai da bayanan da masu gina shi suka tabbatar.",
+    "website": "Shafin yanar gizo",
+    "x": "X",
+    "linkedin": "LinkedIn"
+  },
+  "Story": {
+    "eyebrow": "Labaran masu kafa",
+    "title": "Aikin da ke bayan aiki.",
+    "intro": "Gajerun labaran masu gyara game da mutane, zaɓuka da darussa masu amfani bayan manhajojin da aka gina a Arewa.",
+    "read": "Karanta labari",
+    "back": "Koma labarai",
+    "by": "Daga",
+    "published": "An wallafa",
+    "seedNote": "Wannan samfurin rubutun masu gyara ne mai bayyanannen alama.",
+    "watch": "Kalli tattaunawar"
+  },
+  "Alternative": {
+    "eyebrow": "Madadin da aka gina a Arewa",
+    "title": "Madadin {name}",
+    "intro": "Manhajoji a kundin da masu gina su suka bayyana a matsayin madadin {name}.",
+    "empty": "Babu wani samfurin jama’a a yanzu da ya bayyana kansa a matsayin madadin {name}.",
+    "browse": "Duba kundin manhajoji"
+  },
+  "Newsletter": {
+    "eyebrow": "Saƙon mako-mako",
+    "title": "Ci gaba da sanin abin da Arewa ke ginawa.",
+    "intro": "Kowace Litinin, sami sababbin manhajoji da aka amince da su da labari guda mai kyau. Zaɓi Turanci ko Hausa; tabbatar sau ɗaya, zaka iya dainawa a kowane lokaci.",
+    "email": "Adireshin imel",
+    "language": "Harshen imel",
+    "subscribe": "Yi rajista",
+    "success": "Duba akwatin saƙonka don tabbatar da rajistarka.",
+    "alreadySubscribed": "An riga an yi maka rajista don wannan imel na mako-mako.",
+    "error": "Ba mu iya ajiye rajistarka ba. A sake gwadawa.",
+    "confirmTitle": "An tabbatar da rajistarka.",
+    "confirmText": "Saƙon mako mai zuwa zai zo da harshen da ka zaɓa.",
+    "confirmInvalidTitle": "Wannan hanyar tabbatarwa ba ta aiki yanzu.",
+    "confirmInvalidText": "Wataƙila ka riga ka tabbatar da rajistarka, ko hanyar ba ta cika ba.",
+    "backHome": "Koma gida"
   }
 }

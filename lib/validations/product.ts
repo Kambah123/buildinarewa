@@ -62,6 +62,48 @@ export const emailSchema = z.object({
   next: z.string().trim().max(500).optional().default('/')
 });
 
+export const newsletterSchema = z.object({
+  email: z.string().trim().email('Enter a valid email address.').max(255),
+  lang: z.enum(['en', 'ha'])
+});
+
+export const newsletterConfirmationSchema = z.object({
+  token: z.string().uuid()
+});
+
+export const builderSchema = z.object({
+  name: z.string().trim().min(2).max(120),
+  headline: z.string().trim().min(4).max(180),
+  bioEn: z.string().trim().min(40).max(3000),
+  bioHa: z.string().trim().max(3000).optional().default(''),
+  state: z.string().trim().max(8).optional().default(''),
+  website: z.string().trim().max(500).optional().default(''),
+  x: z.string().trim().max(500).optional().default(''),
+  linkedin: z.string().trim().max(500).optional().default(''),
+  photoUrl: z.string().trim().max(1000).optional().default('')
+}).superRefine((values, ctx) => {
+  for (const field of ['website', 'x', 'linkedin', 'photoUrl'] as const) {
+    if (values[field] && !/^https?:\/\//i.test(values[field])) ctx.addIssue({code: 'custom', path: [field], message: 'Enter a full URL starting with http:// or https://.'});
+  }
+});
+
+export const storySchema = z.object({
+  builderId: z.string().uuid().optional().or(z.literal('')).transform((value) => value || undefined),
+  titleEn: z.string().trim().min(8).max(180),
+  titleHa: z.string().trim().max(180).optional().default(''),
+  excerptEn: z.string().trim().min(30).max(500),
+  excerptHa: z.string().trim().max(500).optional().default(''),
+  bodyEn: z.string().trim().min(100).max(30000),
+  bodyHa: z.string().trim().max(30000).optional().default(''),
+  coverUrl: z.string().trim().max(1000).optional().default(''),
+  videoUrl: z.string().trim().max(1000).optional().default(''),
+  publish: z.enum(['true', 'false']).default('false')
+}).superRefine((values, ctx) => {
+  for (const field of ['coverUrl', 'videoUrl'] as const) {
+    if (values[field] && !/^https?:\/\//i.test(values[field])) ctx.addIssue({code: 'custom', path: [field], message: 'Enter a full URL starting with http:// or https://.'});
+  }
+});
+
 export const imageFileSchema = z.object({
   type: z.string().regex(/^image\/(png|jpeg|webp)$/, 'Use a PNG, JPG or WebP image.'),
   size: z.number().positive().max(5 * 1024 * 1024, 'Images must be 5 MB or smaller.')

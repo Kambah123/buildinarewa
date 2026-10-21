@@ -64,7 +64,7 @@ export const seedProducts: Product[] = [
     upvoteCount: 0,
     isSeed: true,
     screenshots: [],
-    makers: []
+    makers: [{id: 'seed-builder-zipa', name: 'Zipa team', slug: 'zipa-team', role: 'Product team'}]
   },
   {
     id: 'seed-arewa-life',

@@ -22,6 +22,7 @@ export async function SiteFooter({locale}: {locale: Locale}) {
           <div className="space-y-3">
             <Link className="focus-ring block text-sm text-[var(--muted)] hover:text-[var(--ink)]" href={`/${locale}/terms`}>{t('terms')}</Link>
             <Link className="focus-ring block text-sm text-[var(--muted)] hover:text-[var(--ink)]" href={`/${locale}/privacy`}>{t('privacy')}</Link>
+            <Link className="focus-ring block text-sm text-[var(--muted)] hover:text-[var(--ink)]" href={`/${locale}/newsletter`}>{t('newsletter')}</Link>
             <a className="focus-ring block text-sm text-[var(--muted)] hover:text-[var(--ink)]" href="mailto:hello@arewaisbuilding.com">hello@arewaisbuilding.com</a>
           </div>
         </div>

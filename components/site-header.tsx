@@ -9,6 +9,8 @@ export async function SiteHeader({locale, viewer}: {locale: Locale; viewer: View
   const alternateLocale = locale === 'en' ? 'ha' : 'en';
   const nav = [
     {href: `/${locale}/products`, label: t('directory')},
+    {href: `/${locale}/builders`, label: t('builders')},
+    {href: `/${locale}/stories`, label: t('stories')},
     {href: `/${locale}/about`, label: t('about')}
   ];
 

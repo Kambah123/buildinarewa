@@ -20,3 +20,17 @@ test('a signed-out visitor is asked to sign in before submitting', async ({page}
   await page.goto('/en/submit');
   await expect(page.getByRole('heading', {name: 'Sign in to submit'})).toBeVisible();
 });
+
+test('visitor can read a story and find an alternative page', async ({page}) => {
+  await page.goto('/en/stories');
+  await page.getByRole('link', {name: /A directory starts by making room/i}).click();
+  await expect(page.getByRole('heading', {name: 'A directory starts by making room'})).toBeVisible();
+  await page.goto('/en/alternatives/shopify');
+  await expect(page.getByRole('heading', {name: 'Alternatives to shopify'})).toBeVisible();
+});
+
+test('visitor can open the newsletter subscription page', async ({page}) => {
+  await page.goto('/en/newsletter');
+  await expect(page.getByRole('heading', {name: 'Keep up with what Arewa is building.'})).toBeVisible();
+  await expect(page.getByLabel('Email address')).toBeVisible();
+});

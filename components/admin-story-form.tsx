@@ -1,0 +1,14 @@
+'use client';
+
+import {useActionState} from 'react';
+import {useTranslations} from 'next-intl';
+import {createStory, initialReviewState} from '@/app/[locale]/admin/actions';
+import {AdminField} from './admin-builder-form';
+import type {Builder, Locale} from '@/lib/types';
+
+export function AdminStoryForm({locale, builders}: {locale: Locale; builders: Builder[]}) {
+  const [state, action, pending] = useActionState(createStory.bind(null, locale), initialReviewState);
+  const t = useTranslations('Admin');
+  const common = useTranslations('Common');
+  return <form action={action} className="grid gap-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 sm:grid-cols-2">{state.message ? <p role={state.status === 'error' ? 'alert' : 'status'} className={`sm:col-span-2 rounded-xl p-3 text-sm ${state.status === 'error' ? 'bg-red-50 text-red-800 dark:bg-red-950/30 dark:text-red-200' : 'bg-emerald-50 text-emerald-800 dark:bg-emerald-950/30 dark:text-emerald-200'}`}>{state.message}</p> : null}<AdminField label={t('storyBuilder')}><select name="builderId" defaultValue="" className="input"><option value="">—</option>{builders.map((builder) => <option key={builder.id} value={builder.id}>{builder.name}</option>)}</select></AdminField><AdminField label={t('coverUrl')}><input name="coverUrl" type="url" placeholder="https://" className="input" /></AdminField><AdminField label={t('titleEn')} className="sm:col-span-2"><input name="titleEn" required minLength={8} className="input" /></AdminField><AdminField label={t('titleHa')} className="sm:col-span-2"><input name="titleHa" className="input" /></AdminField><AdminField label={t('excerptEn')} className="sm:col-span-2"><textarea name="excerptEn" required minLength={30} rows={3} className="input resize-y" /></AdminField><AdminField label={t('excerptHa')} className="sm:col-span-2"><textarea name="excerptHa" rows={3} className="input resize-y" /></AdminField><AdminField label={t('bodyEn')} className="sm:col-span-2"><textarea name="bodyEn" required minLength={100} rows={12} className="input resize-y font-mono text-xs" /></AdminField><AdminField label={t('bodyHa')} className="sm:col-span-2"><textarea name="bodyHa" rows={10} className="input resize-y font-mono text-xs" /></AdminField><AdminField label={t('videoUrl')} className="sm:col-span-2"><input name="videoUrl" type="url" placeholder="https://" className="input" /></AdminField><label className="sm:col-span-2 flex items-center gap-2 rounded-xl bg-[var(--paper)] px-4 py-3 text-sm font-bold"><input name="publish" type="checkbox" value="true" />{t('publish')}</label><input type="hidden" name="publish" value="false" /><div className="sm:col-span-2 flex justify-end"><button type="submit" disabled={pending} className="focus-ring rounded-full bg-[var(--indigo)] px-5 py-3 text-sm font-bold text-white disabled:opacity-60">{pending ? common('loading') : t('create')}</button></div></form>;
+}

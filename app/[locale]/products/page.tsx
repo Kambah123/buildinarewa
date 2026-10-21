@@ -5,6 +5,7 @@ import {ProductGrid} from '@/components/product-grid';
 import {getCategories, getDirectory, getStates} from '@/lib/queries/catalog';
 import type {Locale, ProductFilters} from '@/lib/types';
 import {productFiltersSchema} from '@/lib/validations/product';
+import {getUpvotedProductIds} from '@/lib/queries/community';
 
 function first(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] : value;
@@ -46,6 +47,8 @@ export default async function ProductsPage({
     getStates()
   ]);
 
+  const upvotedProductIds = await getUpvotedProductIds(directory.products.map((product) => product.id));
+
   return (
     <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16">
       <div className="max-w-2xl">
@@ -58,7 +61,7 @@ export default async function ProductsPage({
         <section aria-live="polite">
           <p className="tabular-nums mb-5 text-sm font-medium text-[var(--muted)]">{t('results', {count: directory.total})}</p>
           {directory.products.length ? <>
-            <ProductGrid products={directory.products} categories={categories} states={states} locale={locale} />
+            <ProductGrid products={directory.products} categories={categories} states={states} locale={locale} upvotedProductIds={upvotedProductIds} />
             <Pagination pathname={`/${locale}/products`} page={directory.page} pageCount={directory.pageCount} query={{q: filters.query, category: filters.category, state: filters.state, stage: filters.stage, funding: filters.funding, alternative: filters.alternative, sort: filters.sort}} />
           </> : <div className="rounded-2xl border border-dashed border-[var(--line)] bg-[var(--surface)] px-6 py-14 text-center">
             <h2 className="font-display text-2xl font-semibold">{t('noResults')}</h2>

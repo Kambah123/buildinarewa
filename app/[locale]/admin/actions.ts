@@ -4,8 +4,8 @@ import {revalidatePath} from 'next/cache';
 import {getViewer} from '@/lib/queries/account';
 import {getAdminSupabase, getServerSupabase} from '@/lib/supabase/server';
 import {sendSubmissionEmail} from '@/lib/email';
-import {productEditSchema, reviewSchema} from '@/lib/validations/product';
-import {listFields} from '@/lib/validations/product';
+import {builderSchema, listFields, productEditSchema, reviewSchema, storySchema} from '@/lib/validations/product';
+import {toSlug} from '@/lib/utils';
 
 export type ReviewState = {status: 'idle' | 'error' | 'success'; message?: string};
 export const initialReviewState: ReviewState = {status: 'idle'};
@@ -108,4 +108,65 @@ export async function editAndApproveProduct(
   revalidatePath(`/${locale}/products`);
   revalidatePath(`/${locale}`);
   return {status: 'success', message: 'Changes saved and listing approved.'};
+}
+
+export async function createBuilder(
+  locale: 'en' | 'ha',
+  _: ReviewState,
+  formData: FormData
+): Promise<ReviewState> {
+  const parsed = builderSchema.safeParse({
+    name: formData.get('name'), headline: formData.get('headline'), bioEn: formData.get('bioEn'), bioHa: formData.get('bioHa'),
+    state: formData.get('state'), website: formData.get('website'), x: formData.get('x'), linkedin: formData.get('linkedin'), photoUrl: formData.get('photoUrl')
+  });
+  if (!parsed.success) return {status: 'error', message: parsed.error.issues[0]?.message ?? 'Check the builder profile fields.'};
+  const context = await reviewerClient();
+  if (!context?.supabase) return {status: 'error', message: 'You do not have permission to manage builders.'};
+  const baseSlug = toSlug(parsed.data.name);
+  if (!baseSlug) return {status: 'error', message: 'Use a name containing letters or numbers.'};
+  let slug = baseSlug;
+  const {data: existing} = await context.supabase.from('builders').select('id').eq('slug', slug).maybeSingle();
+  if (existing) slug = `${baseSlug}-${crypto.randomUUID().slice(0, 6)}`;
+  const {error} = await context.supabase.from('builders').insert({
+    slug, name: parsed.data.name, headline: parsed.data.headline, bio_en: parsed.data.bioEn, bio_ha: parsed.data.bioHa || null,
+    state: parsed.data.state || null, photo_url: parsed.data.photoUrl || null,
+    links: {website: parsed.data.website || null, x: parsed.data.x || null, linkedin: parsed.data.linkedin || null}, is_seed: false
+  });
+  if (error) return {status: 'error', message: error.message};
+  revalidatePath(`/${locale}/builders`);
+  revalidatePath(`/${locale}/admin/builders`);
+  revalidatePath(`/${locale}`);
+  return {status: 'success', message: 'Builder profile created.'};
+}
+
+export async function createStory(
+  locale: 'en' | 'ha',
+  _: ReviewState,
+  formData: FormData
+): Promise<ReviewState> {
+  const parsed = storySchema.safeParse({
+    builderId: formData.get('builderId'), titleEn: formData.get('titleEn'), titleHa: formData.get('titleHa'),
+    excerptEn: formData.get('excerptEn'), excerptHa: formData.get('excerptHa'), bodyEn: formData.get('bodyEn'), bodyHa: formData.get('bodyHa'),
+    coverUrl: formData.get('coverUrl'), videoUrl: formData.get('videoUrl'), publish: formData.get('publish')
+  });
+  if (!parsed.success) return {status: 'error', message: parsed.error.issues[0]?.message ?? 'Check the story fields.'};
+  const context = await reviewerClient();
+  if (!context?.supabase) return {status: 'error', message: 'You do not have permission to manage stories.'};
+  const baseSlug = toSlug(parsed.data.titleEn);
+  if (!baseSlug) return {status: 'error', message: 'Use a title containing letters or numbers.'};
+  let slug = baseSlug;
+  const {data: existing} = await context.supabase.from('stories').select('id').eq('slug', slug).maybeSingle();
+  if (existing) slug = `${baseSlug}-${crypto.randomUUID().slice(0, 6)}`;
+  const published = parsed.data.publish === 'true';
+  const {error} = await context.supabase.from('stories').insert({
+    slug, builder_id: parsed.data.builderId ?? null, title_en: parsed.data.titleEn, title_ha: parsed.data.titleHa || null,
+    excerpt_en: parsed.data.excerptEn, excerpt_ha: parsed.data.excerptHa || null, body_en: parsed.data.bodyEn, body_ha: parsed.data.bodyHa || null,
+    cover_url: parsed.data.coverUrl || null, video_url: parsed.data.videoUrl || null,
+    status: published ? 'published' : 'draft', published_at: published ? new Date().toISOString() : null, is_seed: false
+  });
+  if (error) return {status: 'error', message: error.message};
+  revalidatePath(`/${locale}/stories`);
+  revalidatePath(`/${locale}/admin/stories`);
+  revalidatePath(`/${locale}`);
+  return {status: 'success', message: published ? 'Story published.' : 'Story saved as a draft.'};
 }

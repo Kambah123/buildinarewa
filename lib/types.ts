@@ -25,6 +25,7 @@ export type Maker = {
   name: string;
   role: string;
   handle?: string | null;
+  slug?: string | null;
 };
 
 export type Product = {
@@ -54,6 +55,55 @@ export type Product = {
   upvoteCount: number;
   isSeed: boolean;
   makers: Maker[];
+};
+
+export type BuilderLinks = {
+  website?: string | null;
+  x?: string | null;
+  linkedin?: string | null;
+};
+
+export type Builder = {
+  id: string;
+  slug: string;
+  name: string;
+  photoUrl?: string | null;
+  headline: string;
+  bioEn: string;
+  bioHa?: string | null;
+  stateCode?: string | null;
+  links: BuilderLinks;
+  storyId?: string | null;
+  isSeed: boolean;
+  createdAt: string;
+};
+
+export type Story = {
+  id: string;
+  slug: string;
+  builderId?: string | null;
+  titleEn: string;
+  titleHa?: string | null;
+  excerptEn: string;
+  excerptHa?: string | null;
+  bodyEn: string;
+  bodyHa?: string | null;
+  coverUrl?: string | null;
+  videoUrl?: string | null;
+  status: 'draft' | 'published';
+  publishedAt?: string | null;
+  isSeed: boolean;
+  createdAt: string;
+  builder?: Builder | null;
+};
+
+export type ProductNeed = {
+  id: string;
+  needEn: string;
+  needHa?: string | null;
+  productId: string;
+  sort: number;
+  product?: Product | null;
 };
 
 export type ProductFilters = {

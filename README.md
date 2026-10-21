@@ -2,7 +2,7 @@
 
 A curated, bilingual directory for software built in Northern Nigeria and by Arewa people everywhere.
 
-> This repository is currently at **Stage 1: MVP directory**. See [`docs/MASTER_PROMPT.md`](docs/MASTER_PROMPT.md) for the agreed product brief and [`CHANGELOG.md`](CHANGELOG.md) for the current delivery checklist.
+> This repository is currently at **Stage 2: builders, stories, voting and newsletter**. See [`docs/MASTER_PROMPT.md`](docs/MASTER_PROMPT.md) for the agreed product brief and [`CHANGELOG.md`](CHANGELOG.md) for the current delivery checklist.
 
 ## Stack
 
@@ -84,6 +84,15 @@ RLS allows a submitter to upload to their own prefix. Public users can only rece
 - Set `RESEND_API_KEY` and `EMAIL_FROM` to send received, approved, and rejected listing emails.
 - Set both Turnstile variables to enable Cloudflare verification on submissions. When `TURNSTILE_SECRET_KEY` is absent, verification is intentionally skipped for local development only.
 - Set `NEXT_PUBLIC_SITE_URL` to the deployed domain before configuring email links and social sharing.
+
+## Stage 2 editorial and community features
+
+- Builders, stories, needs, upvotes, newsletter subscribers, and vote rate-limit events are created in `202610210002_stage_2_community.sql` and seeded by the same `supabase db reset` command.
+- Editorial story bodies are trusted MDX: only editors/admins can create or publish them. Never allow contributor-provided MDX to bypass the review flow.
+- The weekly digest is scheduled in `vercel.json` for **08:00 UTC every Monday**, which is **09:00 Africa/Lagos**. Vercel calls `/api/cron/weekly-digest` with `Authorization: Bearer $CRON_SECRET`.
+- The digest requires `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, `EMAIL_FROM`, `CRON_SECRET`, and `NEXT_PUBLIC_SITE_URL` in the Vercel project environment.
+- Newsletter addresses are double opt-in. The public browser never receives access to subscriber rows; a role-protected CSV export is available at `/api/admin/subscribers`.
+- Upvotes are toggled through a validated API route and a database function. The function enforces one vote per user/product and limits vote changes to 30 per user per minute.
 
 ## Tests and checks
 
